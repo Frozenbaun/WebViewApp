@@ -14,10 +14,17 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        startView()
     }
 
+    func startView() {
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+       
+        
+    }
 
 }
 
