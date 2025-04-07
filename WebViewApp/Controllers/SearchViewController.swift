@@ -8,6 +8,8 @@
 import UIKit
 
 class SearchViewController: UIViewController {
+    
+    var object = 0
 
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -22,10 +24,18 @@ class SearchViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-       
-        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "objectCell" {
+            guard let nextScreen = segue.destination as? ObjectViewController else {return}
+            nextScreen.objectIndex = object
+        }
+        print("es")
     }
 
+   
+    
 }
 
 
@@ -41,7 +51,9 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         return cell
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            object = indexPath.row
+    }
     
     
 }

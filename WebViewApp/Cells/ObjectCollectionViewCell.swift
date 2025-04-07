@@ -14,6 +14,6 @@ class ObjectCollectionViewCell: UICollectionViewCell {
     
     func setup(object: Object) {
         nameLabel.text = object.name
-        imageView.image = object.images
+        imageView.image = object.images[0]
     }
 }
