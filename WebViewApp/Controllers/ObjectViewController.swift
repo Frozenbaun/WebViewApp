@@ -9,10 +9,10 @@ import UIKit
 
 class ObjectViewController: UIViewController {
 
-    var objectIndex = 0
+    var objectIndex: Int?
     
-    @IBOutlet var testImageViewCollection: [UIImageView]!
-    @IBOutlet weak var ThreeImageView: UIImageView!
+    
+    @IBOutlet weak var threeImageView: UIImageView!
     @IBOutlet weak var secondImageView: UIImageView!
     @IBOutlet weak var firstImageView: UIImageView!
     @IBOutlet weak var costLabel: UILabel!
@@ -25,17 +25,17 @@ class ObjectViewController: UIViewController {
         super.viewDidLoad()
 
         startView()
-        print(objectIndex)
+        print(objectIndex ?? "nil")
     }
     
     func startView() {
+        guard let int = objectIndex else {return}
+        self.nameLabel.text = objects[int].name
+        self.costLabel.text = objects[int].cost
         
-        self.nameLabel.text = objects[objectIndex].name
-        self.costLabel.text = objects[objectIndex].cost
-        
-//            for i in 0..<objects[objectIndex].images.count {
-                self.testImageViewCollection[0].image = objects[objectIndex].images[0]
-//            }
+        firstImageView.image = objects[int].images[0]
+        secondImageView.image = objects[int].images[1]
+        threeImageView.image = objects[int].images[2]
         
     }
 
