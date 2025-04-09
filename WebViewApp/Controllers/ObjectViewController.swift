@@ -9,12 +9,11 @@ import UIKit
 
 class ObjectViewController: UIViewController {
 
-    var objectIndex: Int?
+    var object: Object?
     
     
-    @IBOutlet weak var threeImageView: UIImageView!
-    @IBOutlet weak var secondImageView: UIImageView!
-    @IBOutlet weak var firstImageView: UIImageView!
+   
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var costLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     
@@ -25,18 +24,38 @@ class ObjectViewController: UIViewController {
         super.viewDidLoad()
 
         startView()
-        print(objectIndex ?? "nil")
+        
     }
     
     func startView() {
-        guard let int = objectIndex else {return}
-        self.nameLabel.text = objects[int].name
-        self.costLabel.text = objects[int].cost
         
-        firstImageView.image = objects[int].images[0]
-        secondImageView.image = objects[int].images[1]
-        threeImageView.image = objects[int].images[2]
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        guard let object = object else {return}
+        self.nameLabel.text = object.name
+        self.costLabel.text = object.cost
+        
+        
         
     }
 
+}
+
+
+
+extension ObjectViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return object?.images.count ?? 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as! ImageCollectionViewCell
+            guard let obj = object else {return cell}
+            cell.setup(obj: obj, indexPath: indexPath)
+            print("srabotal")
+            return cell
+    }
+    
+    
 }

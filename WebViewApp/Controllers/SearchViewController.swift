@@ -9,7 +9,7 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
-    var object = 0
+    var object: Object?
 
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -26,13 +26,7 @@ class SearchViewController: UIViewController {
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "objectCell" {
-            guard let nextScreen = segue.destination as? ObjectViewController else {return}
-            nextScreen.objectIndex = object
-        }
-        print("es")
-    }
+   
 
    
     
@@ -52,7 +46,12 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            object = indexPath.row
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let nextscreen = storyboard.instantiateViewController(identifier: "ObjectViewController") as? ObjectViewController {
+            nextscreen.object = objects[indexPath.row]
+            
+            self.navigationController?.pushViewController(nextscreen, animated: true)
+        }
     }
     
     
