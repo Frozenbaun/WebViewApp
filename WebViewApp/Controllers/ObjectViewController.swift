@@ -77,5 +77,12 @@ extension ObjectViewController: UICollectionViewDelegate, UICollectionViewDataSo
             return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let nextScreen = storyboard.instantiateViewController(identifier: "WebView") as? WebViewController else {return}
+        nextScreen.object = object
+        
+        self.present(nextScreen, animated: true)
+    }
     
 }

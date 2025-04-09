@@ -152,6 +152,72 @@
             </objects>
             <point key="canvasLocation" x="1733.5877862595419" y="3.5211267605633805"/>
         </scene>
+        <!--Web View Controller-->
+        <scene sceneID="GoC-9D-bZT">
+            <objects>
+                <viewController storyboardIdentifier="WebView" id="SGf-1a-SdI" customClass="WebViewController" customModule="WebViewApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Pod-la-uX0">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dsb-Io-3vm">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="774"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TYN-YR-sng">
+                                <rect key="frame" x="0.0" y="774" width="393" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem image="chevron.backward" catalog="system" id="XGl-I0-WBB">
+                                        <connections>
+                                            <action selector="backButtonAction:" destination="SGf-1a-SdI" id="9j0-Wa-fQl"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="23" style="plain" systemItem="fixedSpace" id="0wN-QB-Err"/>
+                                    <barButtonItem image="chevron.forward" catalog="system" width="65.666666666666657" id="tBy-Id-vl1">
+                                        <connections>
+                                            <action selector="forwardButtonAction:" destination="SGf-1a-SdI" id="2K8-EA-3dZ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="0o3-g0-z2T"/>
+                                    <barButtonItem image="square.and.arrow.up" catalog="system" id="Aud-Px-uMN">
+                                        <connections>
+                                            <action selector="shareButtonAction:" destination="SGf-1a-SdI" id="wcb-cl-8U2"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="12" style="plain" systemItem="fixedSpace" id="Ouj-WL-0tf"/>
+                                    <barButtonItem systemItem="refresh" id="mp7-Ul-DPA">
+                                        <connections>
+                                            <action selector="reloadButtonAction:" destination="SGf-1a-SdI" id="0BK-iw-bnO"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="bOP-8I-4qB">
+                                <rect key="frame" x="186" y="376" width="20" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="evj-Ok-Vd6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="WKView" destination="dsb-Io-3vm" id="TKH-Ws-cpJ"/>
+                        <outlet property="activityIndicator" destination="bOP-8I-4qB" id="qbq-gc-Rx8"/>
+                        <outlet property="backButton" destination="XGl-I0-WBB" id="zbF-t2-Gj5"/>
+                        <outlet property="forwardButton" destination="tBy-Id-vl1" id="nAn-Kc-gAt"/>
+                        <outlet property="toolbar" destination="TYN-YR-sng" id="Qi9-ur-oJx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eaV-Sa-Uct" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2429.770992366412" y="3.5211267605633805"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="EZ0-C8-5oN">
             <objects>
@@ -173,6 +239,9 @@
     </scenes>
     <resources>
         <image name="Max1" width="736" height="736"/>
+        <image name="chevron.backward" catalog="system" width="97" height="128"/>
+        <image name="chevron.forward" catalog="system" width="97" height="128"/>
+        <image name="square.and.arrow.up" catalog="system" width="110" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
